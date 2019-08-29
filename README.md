@@ -15,29 +15,24 @@ pip install pyqt5
 
 Simply copy the `code` folder to start developping your own GUI. 
 
-You can run this basic GUI by running `main.py`.
+You can run this basic GUI by running `main.py`. 
+
+<img src="assets/mainWindow.PNG" width="600">
 
 &nbsp;
 
-## Development
-
-There's a few things to know in order to easily update the GUI.
-
-
-
-### Updating the UI
+## Updating the UI
 
 1. Open the `.ui` file of interest with the Designer program that comes with PyQt. Designer is usually inside `Anaconda/Library/bin/`.
 
-2. Modify the UI (remember to rename objects with good names) and save (replacing old `.ui` file).
+2. Modify the UI (remember to rename objects with good names) and save (replacing old `.ui` file). And that's it. 
 
-3. Convert to python by opening a command prompt where the `.ui` file is and type:
+   - If it's a new window, access the object again by calling PyQt5's loader from `uic` module as we did for our main window:
 
-   ```bash
-   pyuic5 yourWindowFileUi.ui > yourWindowFileUi.py
-   ```
+     ```python
+     mainWindowPath = os.path.join(os.path.dirname(os.path.realpath(__file__)),
+                                   'ui', 'mainWindow.ui')
+     Ui_MainWindow, QtBaseClass = loadUiType(mainWindowPath)
+     ```
 
 And this should work. 
-
-> If you get a null bytes error from importing Ui_yourWindow, go to yourWindowUi.py file, remove the first line (forced encoding) and convert the file encoding with your IDE to UTF-8 (bottom right on PyCharm)
-
